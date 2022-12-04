@@ -89,7 +89,6 @@ def write_door_state_to_influx(state):
         }
         points.append(point)
     client.write_points(points)
-    print(f"Wrote {state} to influx")
 
 
 def start_state_thread(config, interval):

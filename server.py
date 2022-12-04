@@ -74,7 +74,10 @@ def get_state_for_doors(doors):
 
 
 def write_door_state_to_influx(state):
-    client = InfluxDBClient("192.168.1.105", 8086, database="home")
+    host = os.environ["INFLUX_HOST"]
+    port = int(os.environ["INFLUX_PORT"])
+    db = os.environ["INFLUX_DB"]
+    client = InfluxDBClient(host, port, database=db)
     points = []
 
     for name, door_state in state.items():

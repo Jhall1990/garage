@@ -1,0 +1,10 @@
+1. Connect the magnetic switches
+	- COM < - > GPIO N
+	- NO  < - > GROUND
+
+2. Connect the relay. You only need to connect as many IN pins
+   as you have garage doors. There are also rpi relay hats which
+   simplify the relay wiring.
+	- 5v   < - > VCC
+	- IN # < - > GPIO N
+	- GND  < - > GROUND

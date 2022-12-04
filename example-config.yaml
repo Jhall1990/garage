@@ -1,0 +1,16 @@
+# This config file is used to specify which pins are used
+# for each garage door.
+# open_pin - The GPIO pin where the open door sensor is attached
+# closed_pin - The GPIO pin where the closed door sensor is attached
+# relay_ping - The GPIO pin that should be activated to trigger
+#              the relay switch causing the garage door to open
+
+doors:
+  billy:
+    open_pin: 1
+    closed_pin: 2
+    relay_pin: 3
+  bob:
+    open_pin: 4
+    closed_pin: 5
+    relay_pin: 6

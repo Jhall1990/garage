@@ -15,11 +15,11 @@ app = Flask("garage")
 gpio.setmode(gpio.BOARD)
 
 
-DOOR_STATE_OPEN = "open"
 DOOR_STATE_CLOSED = "closed"
+DOOR_STATE_OPEN = "open"
 DOOR_STATE_MOVING = "moving"
-DOOR_OPEN_STAT = 0
-DOOR_CLOSED_STAT = 1
+DOOR_CLOSED_STAT = 0
+DOOR_OPEN_STAT = 1
 DOOR_MOVING_STAT = 2
 
 

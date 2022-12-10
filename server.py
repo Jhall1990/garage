@@ -18,6 +18,9 @@ gpio.setmode(gpio.BOARD)
 DOOR_STATE_OPEN = "open"
 DOOR_STATE_CLOSED = "closed"
 DOOR_STATE_MOVING = "moving"
+DOOR_OPEN_STAT = 0
+DOOR_CLOSED_STAT = 1
+DOOR_MOVING_STAT = 2
 
 
 # Global variable that store the path to the config
@@ -64,6 +67,13 @@ class Door():
 ###########
 # Helpers #
 ###########
+def stat_from_door_state(state):
+    m = {DOOR_STATE_OPEN: DOOR_OPEN_STAT,
+         DOOR_STATE_CLOSED: DOOR_CLOSED_STAT,
+         DOOR_STATE_MOVING: DOOR_MOVING_STAT}
+    return m[state]
+
+
 def doors_from_yaml(config_path):
     with open(config_path, "r", encoding="utf-8") as config:
         config_yaml = yaml.safe_load(config)
@@ -85,7 +95,7 @@ def write_door_state_to_influx(state):
         point = {
             "measurement": "garage",
             "tags": {"name": name},
-            "fields": {"status": door_state}
+            "fields": {"status": stat_from_door_state(door_state)}
         }
         points.append(point)
     client.write_points(points)
